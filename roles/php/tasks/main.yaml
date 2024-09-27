@@ -1,0 +1,63 @@
+---
+    - name: Install php
+      apt: 
+        name : software-properties-common
+
+    - name: "Repo PHP 8.1"
+      apt_repository:
+        repo="ppa:ondrej/php"
+   
+    - name: "Updating the repo"
+      apt: update_cache=yes
+
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-cli
+
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-mysql
+
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-curl
+        
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-cgi
+
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-xsl
+    
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-gd
+
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-mbstring
+    
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-zip
+
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-xmlrpc
+    
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-soap
+    
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-intl
+    
+    - name: Installation PHP 8.1
+      apt: 
+        name : php8.2-fpm
+
+    - name: Installation PHP 8.1
+      apt: 
+        name : libapache2-mod-php

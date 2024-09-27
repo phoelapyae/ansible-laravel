@@ -1,0 +1,16 @@
+---
+# Install Nginx
+- hosts: webserver
+  connection: ssh
+  become: True
+  become_user: root
+  vars:
+    php_version: '8.2'
+  roles:
+    # - nginx
+    # - php
+    # - composer
+    # - git
+    # - laravel
+    # - update_app
+    - geerlingguy.mysql

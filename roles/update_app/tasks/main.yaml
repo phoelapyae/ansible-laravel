@@ -1,0 +1,16 @@
+---
+  - name: Pull a github repository
+    git: 
+        repo: https://github.com/phoelapyae/learning-tdd.git
+        dest: /var/www/html/application
+        update: yes
+        force: yes
+        version: main
+  - name: "Composer install"
+    become_user: root
+    composer:
+      command: install
+      global_command: false
+      working_dir: /var/www/html/application
+    environment:
+        COMPOSER_NO_INTERACTION: "1"

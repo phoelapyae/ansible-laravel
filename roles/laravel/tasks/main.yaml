@@ -1,0 +1,30 @@
+---
+  - name: Clone a github repository
+    git: 
+      repo: https://github.com/phoelapyae/learning-tdd.git
+      dest: /var/www/html/application
+      clone: yes
+      update: yes
+  - name: Giving permissions 
+    command: "{{ item }} chdir=/var/www/html/application/"
+    with_items:
+      - chmod -R 777 /var/www/html/application/
+      - chown -R ubuntu:ubuntu /var/www/html/application/
+  - name: "Composer install"
+    become: yes
+    become_user: ubuntu
+    composer:
+      command: install
+      global_command: false
+      working_dir: /var/www/html/application
+    environment:
+        COMPOSER_NO_INTERACTION: "1"
+  - name: Copy env 
+    command: "{{ item }} chdir=/var/www/html/application/"
+    with_items:
+      - cp .env.example .env
+      - chmod -R 777 .env
+      - chmod -R 777 bootstrap/cache
+      - chmod -R 777 storage
+      - php artisan key:generate
+      - php artisan optimize
